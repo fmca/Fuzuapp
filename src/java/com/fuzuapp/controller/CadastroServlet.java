@@ -5,6 +5,7 @@
  */
 package com.fuzuapp.controller;
 
+import com.fuzuapp.model.Fachada;
 import com.fuzuapp.model.usuario.entidades.Login;
 import com.fuzuapp.model.usuario.entidades.Nome;
 import com.fuzuapp.model.usuario.entidades.Senha;
@@ -56,6 +57,7 @@ public class CadastroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        cadastrar(request, response);
     }
 
     /**
@@ -68,8 +70,10 @@ public class CadastroServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void cadastrar(HttpServletRequest request, HttpServletResponse response) {
-        String nomeErro, loginErro, emailErro, senhaErro;
+    private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nomeErro = null, loginErro = null, emailErro = null, senhaErro = null;
+        
+        boolean cadastrado = false;
         try {
             Nome nome = new Nome(request.getParameter("nome"));
             Login login = new Login(request.getParameter("login"));
@@ -77,6 +81,11 @@ public class CadastroServlet extends HttpServlet {
             Senha senha = new Senha(request.getParameter("senha"));
             
             Usuario usuario = new Usuario(email, login, senha, nome);
+            
+            Fachada fachada = Fachada.getInstance();
+            fachada.cadastrar(usuario);
+            cadastrado = true;
+            
         }catch(NomeInvalidoException e){
             nomeErro = e.getMessage();
         }catch(LoginInvalidoException e2){
@@ -84,10 +93,25 @@ public class CadastroServlet extends HttpServlet {
         }catch(EmailInvalidoException e3){
             emailErro = e3.getMessage();
         }catch(SenhaInvalidaException e4){
-            emailErro = e4.getMessage();
+            senhaErro = e4.getMessage();
         }
 
-
+        
+        if(cadastrado){
+            response.sendRedirect("TelaLogin.jsp");
+        }else{
             response.setContentType("text/html;charset=UTF-8");
+            request.setAttribute("nome_erro", nomeErro);
+            request.setAttribute("login_erro", loginErro);
+            request.setAttribute("email_erro", emailErro);
+            request.setAttribute("senha_erro", senhaErro);
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("TelaCadastro.jsp");
+            dispatcher.forward(request, response);
+        }
+
+            
+            
+            
         }
     }

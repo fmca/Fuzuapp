@@ -21,17 +21,13 @@ import com.fuzuapp.model.usuario.entidades.Usuario;
 public class Fachada {
     private ControladorUsuario controladorUsuario;
     private ControladorResultados controladorResultados;
-    private static Fachada fachada;
+    private static Fachada fachada = new Fachada();
     
-    public Fachada getInstance(){
-        if(fachada == null){
-            fachada = new Fachada();
-        }
-        
-        return fachada;       
+    public static Fachada getInstance(){
+        return fachada;     
     }
     
-    public Fachada(){
+    private Fachada(){
         this.controladorResultados = new ControladorResultados();
         this.controladorUsuario = new ControladorUsuario(new RepositorioList());
     }

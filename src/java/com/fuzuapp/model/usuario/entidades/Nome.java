@@ -31,7 +31,7 @@ public class Nome {
      * @param str the str to set
      */
     public void setStr(String str) throws NomeInvalidoException {
-        if(str == null) throw new NomeInvalidoException("Nome não pode ser nulo");
+        if(str == null || str.trim().length()<=1) throw new NomeInvalidoException("Nome não pode ser nulo");
         else this.str = str;
     }
 

@@ -30,7 +30,7 @@ public class Email {
      * @param str the str to set
      */
     public void setStr(String str) throws EmailInvalidoException {
-        if(str==null) throw new EmailInvalidoException("Email não pode ser nulo.");
+        if(str==null || str.trim().length()<=1) throw new EmailInvalidoException("Email não pode ser nulo.");
         this.str = str;
     }
 

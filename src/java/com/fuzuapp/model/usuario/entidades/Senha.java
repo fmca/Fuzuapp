@@ -30,7 +30,7 @@ public class Senha {
      * @param str the str to set
      */
     public void setStr(String str) throws SenhaInvalidaException {
-        if(str==null) throw new SenhaInvalidaException("Email não pode ser nulo.");
+        if(str==null || str.trim().length()<=1) throw new SenhaInvalidaException("Email não pode ser nulo.");
         this.str = str;
     }
 
