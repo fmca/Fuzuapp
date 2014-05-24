@@ -6,6 +6,8 @@
 
 package com.fuzuapp.model.usuario.entidades;
 
+import com.fuzuapp.model.usuario.exceptions.NomeInvalidoException;
+
 /**
  *
  * @author Filipe_2
@@ -14,7 +16,7 @@ public class Nome {
     
     private String str;
     
-    public Nome(String str){
+    public Nome(String str) throws NomeInvalidoException{
         this.setStr(str);
     }
 
@@ -28,8 +30,9 @@ public class Nome {
     /**
      * @param str the str to set
      */
-    public void setStr(String str) {
-        this.str = str;
+    public void setStr(String str) throws NomeInvalidoException {
+        if(str == null) throw new NomeInvalidoException("Nome não pode ser nulo");
+        else this.str = str;
     }
 
     @Override

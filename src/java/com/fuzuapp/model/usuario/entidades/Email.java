@@ -6,14 +6,16 @@
 
 package com.fuzuapp.model.usuario.entidades;
 
+import com.fuzuapp.model.usuario.exceptions.EmailInvalidoException;
+
 /**
  *
  * @author Filipe_2
  */
-class Email {
+public class Email {
        private String str;
     
-    public Email(String str){
+    public Email(String str) throws EmailInvalidoException{
         this.setStr(str);
     }
 
@@ -27,7 +29,8 @@ class Email {
     /**
      * @param str the str to set
      */
-    public void setStr(String str) {
+    public void setStr(String str) throws EmailInvalidoException {
+        if(str==null) throw new EmailInvalidoException("Email não pode ser nulo.");
         this.str = str;
     }
 

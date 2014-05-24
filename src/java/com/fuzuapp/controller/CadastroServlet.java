@@ -3,11 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.fuzuapp.controller;
 
+import com.fuzuapp.model.usuario.entidades.Login;
+import com.fuzuapp.model.usuario.entidades.Nome;
+import com.fuzuapp.model.usuario.entidades.Senha;
+import com.fuzuapp.model.usuario.entidades.Usuario;
+import com.fuzuapp.model.usuario.entidades.Email;
+import com.fuzuapp.model.usuario.exceptions.EmailInvalidoException;
+import com.fuzuapp.model.usuario.exceptions.LoginInvalidoException;
+import com.fuzuapp.model.usuario.exceptions.NomeInvalidoException;
+import com.fuzuapp.model.usuario.exceptions.SenhaInvalidaException;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,32 +26,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author Filipe_2
  */
 public class CadastroServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CadastroServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CadastroServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -57,7 +39,9 @@ public class CadastroServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("TelaCadastro.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**
@@ -71,7 +55,7 @@ public class CadastroServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**
@@ -84,4 +68,26 @@ public class CadastroServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-}
+    private void cadastrar(HttpServletRequest request, HttpServletResponse response) {
+        String nomeErro, loginErro, emailErro, senhaErro;
+        try {
+            Nome nome = new Nome(request.getParameter("nome"));
+            Login login = new Login(request.getParameter("login"));
+            Email email = new Email(request.getParameter("email"));
+            Senha senha = new Senha(request.getParameter("senha"));
+            
+            Usuario usuario = new Usuario(email, login, senha, nome);
+        }catch(NomeInvalidoException e){
+            nomeErro = e.getMessage();
+        }catch(LoginInvalidoException e2){
+            loginErro = e2.getMessage();
+        }catch(EmailInvalidoException e3){
+            emailErro = e3.getMessage();
+        }catch(SenhaInvalidaException e4){
+            emailErro = e4.getMessage();
+        }
+
+
+            response.setContentType("text/html;charset=UTF-8");
+        }
+    }

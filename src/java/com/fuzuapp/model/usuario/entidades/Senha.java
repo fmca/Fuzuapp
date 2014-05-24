@@ -6,6 +6,8 @@
 
 package com.fuzuapp.model.usuario.entidades;
 
+import com.fuzuapp.model.usuario.exceptions.SenhaInvalidaException;
+
 /**
  *
  * @author Filipe_2
@@ -13,7 +15,7 @@ package com.fuzuapp.model.usuario.entidades;
 public class Senha {
     private String str;
     
-    public Senha(String str){
+    public Senha(String str) throws SenhaInvalidaException{
         this.setStr(str);
     }
 
@@ -27,7 +29,8 @@ public class Senha {
     /**
      * @param str the str to set
      */
-    public void setStr(String str) {
+    public void setStr(String str) throws SenhaInvalidaException {
+        if(str==null) throw new SenhaInvalidaException("Email não pode ser nulo.");
         this.str = str;
     }
 

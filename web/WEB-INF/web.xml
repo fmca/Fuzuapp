@@ -22,7 +22,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastroServlet</servlet-name>
-        <url-pattern>/CadastroServlet</url-pattern>
+        <url-pattern>/cadastro</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ResultadosServlet</servlet-name>

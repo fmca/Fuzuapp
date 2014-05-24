@@ -6,6 +6,8 @@
 
 package com.fuzuapp.model.usuario.entidades;
 
+import com.fuzuapp.model.usuario.exceptions.LoginInvalidoException;
+
 /**
  *
  * @author Filipe_2
@@ -13,7 +15,7 @@ package com.fuzuapp.model.usuario.entidades;
 public class Login {
        private String str;
     
-    public Login(String str){
+    public Login(String str) throws LoginInvalidoException{
         this.setStr(str);
     }
 
@@ -27,7 +29,8 @@ public class Login {
     /**
      * @param str the str to set
      */
-    public void setStr(String str) {
+    public void setStr(String str) throws LoginInvalidoException {
+        if(str==null) throw new LoginInvalidoException("Email não pode ser nulo.");
         this.str = str;
     }
 

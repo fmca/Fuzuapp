@@ -9,9 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cadastro</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="CadastroServlet" method="post"> 
+ Nome: <input type="text" name="nome"/> </br> 
+ Login: <input type="text" name="login"/> </br>
+ Email: <input type="text" name="email"/> </br> 
+ Senha: <input type="text" name="senha"/> </br> 
+ <input type="submit" value="Cadastrar"/> 
+ </form> 
     </body>
 </html>
