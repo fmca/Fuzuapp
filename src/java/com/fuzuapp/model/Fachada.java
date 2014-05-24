@@ -13,6 +13,7 @@ import com.fuzuapp.model.usuario.RepositorioList;
 import com.fuzuapp.model.usuario.entidades.Login;
 import com.fuzuapp.model.usuario.entidades.Senha;
 import com.fuzuapp.model.usuario.entidades.Usuario;
+import com.fuzuapp.model.usuario.exceptions.AutenticacaoInvalida;
 
 /**
  *
@@ -32,8 +33,8 @@ public class Fachada {
         this.controladorUsuario = new ControladorUsuario(new RepositorioList());
     }
     
-    public void logar(Login login, Senha senha){
-        //TODO
+    public void logar(Login login, Senha senha) throws AutenticacaoInvalida{
+        controladorUsuario.autenticar(login, senha);
     }
     public void cadastrar(Usuario usuario){
         //TODO

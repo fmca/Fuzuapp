@@ -12,6 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+          <form action="login" method="post">
+            Login: <input type="text" name="login" value="<%= request.getParameter("login") != null ? request.getParameter("login") : ""%>"/></br> 
+            Senha: <input type="text" name="senha" /> </br>
+            <span class="erro"> ${erro} </span></br>
+            <input type="submit" value="Entrar"/> 
+          </form>
     </body>
 </html>

@@ -7,7 +7,9 @@
 package com.fuzuapp.model.usuario;
 
 import com.fuzuapp.model.usuario.entidades.Login;
+import com.fuzuapp.model.usuario.entidades.Senha;
 import com.fuzuapp.model.usuario.entidades.Usuario;
+import com.fuzuapp.model.usuario.exceptions.AutenticacaoInvalida;
 
 /**
  *
@@ -21,10 +23,11 @@ public class ControladorUsuario {
         this.cadastroUsuario = new CadastroUsuario(repUsuario);
     }
     public void cadastrar (Usuario usuario){
-        //TODO
+        this.cadastroUsuario.inserirUsuario(usuario);
     }
     
-    public void autenticar (Login login, String senha){
-        //TODO
+    public void autenticar (Login login, Senha senha) throws AutenticacaoInvalida{
+        
+        cadastroUsuario.autenticar(login, senha);
     }
 }

@@ -6,7 +6,10 @@
 
 package com.fuzuapp.model.usuario;
 
+import com.fuzuapp.model.usuario.entidades.Login;
+import com.fuzuapp.model.usuario.entidades.Senha;
 import com.fuzuapp.model.usuario.entidades.Usuario;
+import com.fuzuapp.model.usuario.exceptions.AutenticacaoInvalida;
 
 /**
  *
@@ -19,21 +22,28 @@ public class CadastroUsuario {
     public CadastroUsuario(IRepositorioUsuario repositorioUsuario){
         this.repositorioUsuario = repositorioUsuario;
     }
-    public Usuario getUsuario(String login){
-        //TODO
-        
-        return null;
+    public Usuario getUsuario(Login login){
+        return repositorioUsuario.get(login);
     }
     
-    public void autenticar (String login, String senha){
-        //TODO
+    public void autenticar (Login login, Senha senha) throws AutenticacaoInvalida{
+        
+        Usuario u = getUsuario(login);
+        
+        if (u == null){
+             throw new AutenticacaoInvalida("Usuário não existe");
+        }
+        if (! u.validar(senha.toString())){
+            throw new AutenticacaoInvalida("Senha inválida");
+        }
+        
     }
     
     public void inserirUsuario(Usuario usuario){
-        //TODO
+        this.repositorioUsuario.inserir(usuario);
     }
     
     public void remover(Usuario usuario){
-        //TODO
+       this.repositorioUsuario.remover(usuario);
     }
 }

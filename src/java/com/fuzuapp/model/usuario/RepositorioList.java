@@ -27,7 +27,7 @@ public class RepositorioList implements IRepositorioUsuario{
     @Override
     public void remover(Usuario usuario) {
         for(Usuario u : usuarios){
-            if(u.getNome().equals(usuario)){
+            if(u.getLogin().equals(usuario)){
                 this.usuarios.remove(u);
                 break;
             }
@@ -37,7 +37,7 @@ public class RepositorioList implements IRepositorioUsuario{
     @Override
     public Usuario get(Login login) {
         for(Usuario u: usuarios){
-            if(u.getLogin().equals(login)){
+            if(u.getLogin().toString().equals(login.toString())){
                 return u;
             }
         }
