@@ -14,7 +14,9 @@ import com.fuzuapp.model.usuario.exceptions.LoginInvalidoException;
  */
 public class Login {
        private String str;
-    
+    public Login(){
+           
+       }
     public Login(String str) throws LoginInvalidoException{
         this.setStr(str);
     }

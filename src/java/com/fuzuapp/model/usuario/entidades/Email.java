@@ -14,6 +14,9 @@ import com.fuzuapp.model.usuario.exceptions.EmailInvalidoException;
  */
 public class Email {
        private String str;
+       public Email(){
+           
+       }
     
     public Email(String str) throws EmailInvalidoException{
         this.setStr(str);

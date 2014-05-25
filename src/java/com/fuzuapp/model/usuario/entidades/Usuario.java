@@ -6,16 +6,33 @@
 
 package com.fuzuapp.model.usuario.entidades;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author Filipe_2
  */
+
 public class Usuario {
     
+
+    private int id;
+    
     private Email email;
+    
+
     private Login login;
+    
+
     private Senha senha;
+    
+
     private Nome nome;
+    
     
     public Usuario(Email email, Login login, Senha senha, Nome nome){
         this.email = email;
@@ -74,7 +91,28 @@ public class Usuario {
     }
     
     public boolean validar(String senha){
-        return senha.equals(this.senha);
+        return senha.equals(this.getSenha());
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the senha
+     */
+    public Senha getSenha() {
+        return senha;
     }
     
 }

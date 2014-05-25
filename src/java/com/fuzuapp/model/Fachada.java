@@ -10,6 +10,7 @@ import com.fuzuapp.model.resultados.ControladorResultados;
 import com.fuzuapp.model.resultados.entidades.GeoPoint;
 import com.fuzuapp.model.usuario.ControladorUsuario;
 import com.fuzuapp.model.usuario.RepositorioList;
+import com.fuzuapp.model.usuario.RepositorioUsuarioHibernate;
 import com.fuzuapp.model.usuario.entidades.Login;
 import com.fuzuapp.model.usuario.entidades.Senha;
 import com.fuzuapp.model.usuario.entidades.Usuario;
@@ -30,14 +31,14 @@ public class Fachada {
     
     private Fachada(){
         this.controladorResultados = new ControladorResultados();
-        this.controladorUsuario = new ControladorUsuario(new RepositorioList());
+        this.controladorUsuario = new ControladorUsuario(new RepositorioUsuarioHibernate());
     }
     
     public void logar(Login login, Senha senha) throws AutenticacaoInvalida{
         controladorUsuario.autenticar(login, senha);
     }
     public void cadastrar(Usuario usuario){
-        //TODO
+        controladorUsuario.cadastrar(usuario);
     }
     
     public void buscarResultados(GeoPoint geopoint, double raio){

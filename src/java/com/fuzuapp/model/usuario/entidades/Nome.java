@@ -16,6 +16,9 @@ public class Nome {
     
     private String str;
     
+    public Nome(){
+           
+       }
     public Nome(String str) throws NomeInvalidoException{
         this.setStr(str);
     }
