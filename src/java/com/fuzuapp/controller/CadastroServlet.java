@@ -98,7 +98,7 @@ public class CadastroServlet extends HttpServlet {
 
         
         if(cadastrado){
-            response.sendRedirect("TelaLogin.jsp");
+            response.sendRedirect("login");
         }else{
             response.setContentType("text/html;charset=UTF-8");
             request.setAttribute("nome_erro", nomeErro);
@@ -106,7 +106,7 @@ public class CadastroServlet extends HttpServlet {
             request.setAttribute("email_erro", emailErro);
             request.setAttribute("senha_erro", senhaErro);
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("TelaCadastro.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro");
             dispatcher.forward(request, response);
         }
 

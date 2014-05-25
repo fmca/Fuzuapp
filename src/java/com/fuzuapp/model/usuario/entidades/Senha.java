@@ -35,7 +35,7 @@ public class Senha {
      */
     public void setStr(String str) throws SenhaInvalidaException {
         if (str == null || str.trim().length() <= 1) {
-            throw new SenhaInvalidaException("Email não pode ser nulo.");
+            throw new SenhaInvalidaException("Senha não pode ser nula");
         }
         this.str = str;
     }

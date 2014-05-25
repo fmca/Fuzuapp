@@ -67,25 +67,24 @@ public class LoginServlet extends HttpServlet {
     private void logar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         
         boolean logado = false;
+        boolean credenciais = false;
         try{
         Login login = new Login(request.getParameter("login"));
         Senha senha = new Senha(request.getParameter("senha"));       
-        
+        credenciais = true;
         Fachada fachada = Fachada.getInstance();       
         fachada.logar(login, senha);
         
         logado = true;
         
         }catch(Exception e){
-                
+                request.setAttribute("erro", e.getMessage());
         }
         
         if(logado){
             response.sendRedirect("TelaResultados.jsp");
-        }else{
-            request.setAttribute("erro", "Login ou senha incorretos");
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher("TelaLogin.jsp");
+        }else{ 
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login");
             dispatcher.forward(request, response);
         }
         

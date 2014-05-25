@@ -6,12 +6,6 @@
 
 package com.fuzuapp.model.usuario.entidades;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 /**
  *
  * @author Filipe_2
@@ -33,6 +27,7 @@ public class Usuario {
 
     private Nome nome;
     
+    public Usuario(){}
     
     public Usuario(Email email, Login login, Senha senha, Nome nome){
         this.email = email;
@@ -91,7 +86,7 @@ public class Usuario {
     }
     
     public boolean validar(String senha){
-        return senha.equals(this.getSenha());
+        return senha.equals(this.getSenha().toString());
     }
 
     /**
