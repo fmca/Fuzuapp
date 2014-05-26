@@ -20,6 +20,8 @@ public class Resultado {
     private String descricao;
     private int tipo;
     private GeoPoint local;
+    private String horario;
+    private String endereco;
     
     public Resultado(){
         
@@ -80,4 +82,32 @@ public class Resultado {
     public void setLocal(GeoPoint local) {
         this.local = local;
     }
+
+    @Override
+    public String toString() {
+        return getDescricao();
+    }
+
+    /**
+     * @return the horario
+     */
+    public String getHorario() {
+        return horario;
+    }
+
+    /**
+     * @param horario the horario to set
+     */
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
+    public void setEndereco(String fullName) {
+        this.endereco = fullName;
+    }
+    
+    public String getEndereco(){
+        return this.endereco;
+    }
+    
 }

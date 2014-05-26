@@ -26,7 +26,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ResultadosServlet</servlet-name>
-        <url-pattern>/ResultadosServlet</url-pattern>
+        <url-pattern>/resultados</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FavoritosServlet</servlet-name>
@@ -37,4 +37,5 @@
             30
         </session-timeout>
     </session-config>
+    
 </web-app>

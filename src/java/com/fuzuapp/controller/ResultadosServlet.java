@@ -6,8 +6,12 @@
 
 package com.fuzuapp.controller;
 
+import com.fuzuapp.model.Fachada;
+import com.fuzuapp.model.resultados.entidades.GeoPoint;
+import com.fuzuapp.model.resultados.entidades.Resultado;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +36,8 @@ public class ResultadosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        pesquisar(request, response);
+        
     }
 
     /**
@@ -47,7 +52,27 @@ public class ResultadosServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
+        pesquisar(request, response);
+    }
+    
+    private void pesquisar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        Fachada fachada = Fachada.getInstance();
+        String latStr = request.getParameter("lat"); latStr = latStr==null?"-22.912214":latStr;
+        String lonStr = request.getParameter("lon"); lonStr = lonStr==null?"-43.230182":lonStr;
+        String rStr = request.getParameter("raio"); rStr = rStr==null || rStr.trim().length()<1?"1":rStr;
         
+        double latitude = Double.valueOf(latStr);
+        double longitude = Double.valueOf(lonStr);
+        double raio = Double.valueOf(rStr);
+        
+        GeoPoint ponto = new GeoPoint(latitude, longitude);
+        List<Resultado> resultados = fachada.buscarResultados(ponto, raio);
+        request.setAttribute("resultados", resultados);
+        request.setAttribute("latitude", ponto.getLatitude());
+        request.setAttribute("longitude", ponto.getLongitude());
+        request.setAttribute("raio", raio*1000);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("TelaResultados.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**

@@ -8,13 +8,14 @@ package com.fuzuapp.model;
 
 import com.fuzuapp.model.resultados.ControladorResultados;
 import com.fuzuapp.model.resultados.entidades.GeoPoint;
+import com.fuzuapp.model.resultados.entidades.Resultado;
 import com.fuzuapp.model.usuario.ControladorUsuario;
 import com.fuzuapp.model.usuario.RepositorioList;
-import com.fuzuapp.model.usuario.RepositorioUsuarioHibernate;
 import com.fuzuapp.model.usuario.entidades.Login;
 import com.fuzuapp.model.usuario.entidades.Senha;
 import com.fuzuapp.model.usuario.entidades.Usuario;
 import com.fuzuapp.model.usuario.exceptions.AutenticacaoInvalida;
+import java.util.List;
 
 /**
  *
@@ -41,8 +42,8 @@ public class Fachada {
         controladorUsuario.cadastrar(usuario);
     }
     
-    public void buscarResultados(GeoPoint geopoint, double raio){
-        controladorResultados.buscarResultados(geopoint, raio);
+    public List<Resultado> buscarResultados(GeoPoint geopoint, double raio){
+        return controladorResultados.buscarResultados(geopoint, raio);
     }
     
 }

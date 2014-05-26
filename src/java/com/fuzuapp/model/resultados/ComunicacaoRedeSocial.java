@@ -18,6 +18,10 @@ public class ComunicacaoRedeSocial {
 
     IRedeSociaisAdapter twitter;
     
+    public ComunicacaoRedeSocial(){
+        inicializarRedes();
+    }
+    
     private void inicializarRedes(){
         twitter = new TwitterAdapter();
     }

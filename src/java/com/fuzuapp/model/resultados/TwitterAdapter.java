@@ -8,6 +8,7 @@ package com.fuzuapp.model.resultados;
 
 import com.fuzuapp.model.resultados.entidades.GeoPoint;
 import com.fuzuapp.model.resultados.entidades.Resultado;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -48,7 +49,9 @@ public class TwitterAdapter implements IRedeSociaisAdapter{
                 Resultado r = new Resultado();
                 r.setDescricao(status.getText());
                 r.setUrl(status.getSource());
-                r.setLocal(new GeoPoint(status.getGeoLocation().getLatitude(), status.getGeoLocation().getLongitude()));
+                try{r.setEndereco(status.getPlace().getFullName());}catch(Exception e){}
+                r.setHorario(new SimpleDateFormat("dd/MM hh:mm").format(status.getCreatedAt()));
+                //r.setLocal(new GeoPoint(status.getGeoLocation().getLatitude(), status.getGeoLocation().getLongitude()));
                 r.setTipo(Resultado.TEXTO);
                 
                 resultados.add(r);
