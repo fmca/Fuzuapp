@@ -98,7 +98,7 @@ public class CadastroServlet extends HttpServlet {
 
         
         if(cadastrado){
-            response.sendRedirect("login");
+            response.sendRedirect("TelaLogin.jsp");
         }else{
             response.setContentType("text/html;charset=UTF-8");
             request.setAttribute("nome_erro", nomeErro);

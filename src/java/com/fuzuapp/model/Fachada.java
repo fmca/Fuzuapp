@@ -31,7 +31,7 @@ public class Fachada {
     
     private Fachada(){
         this.controladorResultados = new ControladorResultados();
-        this.controladorUsuario = new ControladorUsuario(new RepositorioUsuarioHibernate());
+        this.controladorUsuario = new ControladorUsuario(new RepositorioList());
     }
     
     public void logar(Login login, Senha senha) throws AutenticacaoInvalida{
@@ -42,7 +42,7 @@ public class Fachada {
     }
     
     public void buscarResultados(GeoPoint geopoint, double raio){
-        //TODO
+        controladorResultados.buscarResultados(geopoint, raio);
     }
     
 }

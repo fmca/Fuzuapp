@@ -14,15 +14,6 @@ import java.util.List;
  *
  * @author Filipe_2
  */
-public class ComunicacaoRedeSocial {
-
-    IRedeSociaisAdapter twitter;
-    
-    private void inicializarRedes(){
-        twitter = new TwitterAdapter();
-    }
-    public List<Resultado> buscarResultados(GeoPoint localizacao, double raio) {
-        return twitter.getResultados(localizacao, raio);
-    }
-    
+interface IRedeSociaisAdapter {
+    List<Resultado> getResultados(GeoPoint ponto, double raio);
 }

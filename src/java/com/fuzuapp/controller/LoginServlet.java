@@ -84,7 +84,7 @@ public class LoginServlet extends HttpServlet {
         if(logado){
             response.sendRedirect("TelaResultados.jsp");
         }else{ 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("TelaLogin.jsp");
             dispatcher.forward(request, response);
         }
         
