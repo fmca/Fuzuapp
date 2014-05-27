@@ -106,7 +106,7 @@ public class CadastroServlet extends HttpServlet {
             request.setAttribute("email_erro", emailErro);
             request.setAttribute("senha_erro", senhaErro);
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("TelaCadastro.jsp");
             dispatcher.forward(request, response);
         }
 

@@ -77,12 +77,13 @@ public class LoginServlet extends HttpServlet {
         
         logado = true;
         
+        
         }catch(Exception e){
                 request.setAttribute("erro", e.getMessage());
         }
         
         if(logado){
-            response.sendRedirect("TelaResultados.jsp");
+            response.sendRedirect("resultados");
         }else{ 
             RequestDispatcher dispatcher = request.getRequestDispatcher("TelaLogin.jsp");
             dispatcher.forward(request, response);

@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
         <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <title>Resultados</title>
     </head>
     <body>
@@ -30,7 +31,7 @@
         <div id="map" style="width: 30%; height: 50em; float: right"></div>
         <ul style="float: left; width: 60%">
             <c:forEach items="${resultados}" var="resultado">
-                <li><span style="color: white;"> <c:out value="${resultado.horario}"/></span>> -- <c:out value="${resultado.descricao}"/>  </li>
+                <li><span style="color: #E74C3C;"> <c:out value="${resultado.horario}"/></span>> -- <c:out value="${resultado.descricao}"/>  </li>
                 </c:forEach>
         </ul>
 
@@ -70,7 +71,7 @@
     <style>
         body{
             margin: 0;
-            background:rgba(125, 208, 85, 0.8);
+            
         }
         .menu{
 
