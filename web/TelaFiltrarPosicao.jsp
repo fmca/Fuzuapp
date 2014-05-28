@@ -9,9 +9,24 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Escolha um lugar</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+
+        <button>Minha posição</button>
+        <button>Ponto no Mapa</button>
+        <input type="text" placeholder="Escolha um lugar"></input>
     </body>
+
+
+    <script>
+        
+        
+        navigator.geolocation.getCurrentPosition(GetLocation);
+        function GetLocation(location) {
+            alert(location.coords.latitude);
+            alert(location.coords.longitude);
+            alert(location.coords.accuracy);
+        }
+    </script>
 </html>

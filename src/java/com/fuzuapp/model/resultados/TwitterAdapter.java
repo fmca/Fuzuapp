@@ -50,7 +50,8 @@ public class TwitterAdapter implements IRedeSociaisAdapter{
                 r.setDescricao(status.getText());
                 r.setUrl(status.getSource());
                 try{r.setEndereco(status.getPlace().getFullName());}catch(Exception e){}
-                r.setHorario(new SimpleDateFormat("dd/MM hh:mm").format(status.getCreatedAt()));
+                r.setHorario(new SimpleDateFormat("dd/MM HH:mm").format(status.getCreatedAt()));
+                r.setFotoUrl(status.getUser().getMiniProfileImageURL());
                 //r.setLocal(new GeoPoint(status.getGeoLocation().getLatitude(), status.getGeoLocation().getLongitude()));
                 r.setTipo(Resultado.TEXTO);
                 

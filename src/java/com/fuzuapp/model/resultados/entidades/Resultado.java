@@ -22,6 +22,7 @@ public class Resultado {
     private GeoPoint local;
     private String horario;
     private String endereco;
+    private String fotoUrl;
     
     public Resultado(){
         
@@ -108,6 +109,13 @@ public class Resultado {
     
     public String getEndereco(){
         return this.endereco;
+    }
+
+    public String getFotoUrl(){
+        return this.fotoUrl;
+    }
+    public void setFotoUrl(String miniProfileImageURL) {
+        this.fotoUrl = miniProfileImageURL;
     }
     
 }
