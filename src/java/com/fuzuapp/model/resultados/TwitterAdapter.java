@@ -42,7 +42,7 @@ public class TwitterAdapter implements IRedeSociaisAdapter{
             GeoLocation geo = new GeoLocation(ponto.getLatitude(), ponto.getLongitude());
             query.setGeoCode(geo, raio, Query.KILOMETERS);
             query.resultType(Query.RECENT);
-            query.setCount(50);
+            query.setCount(20);
             QueryResult result = twitter.search(query);
             
             for (Status status : result.getTweets()) {
